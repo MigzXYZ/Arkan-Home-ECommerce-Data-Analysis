@@ -4,6 +4,12 @@
 [![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://github.com/MigzXYZ/Arkan-Home-ECommerce-Data-Analysis/tree/main/SQL_Scripts)
 [![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)](https://github.com/MigzXYZ/Arkan-Home-ECommerce-Data-Analysis/tree/main/Dataset)
 
+## 👥 Team Members
+* [Ahmed Magdy](https://github.com/MigzXYZ)
+* [Mark Morris]
+* [Mai Ibrahim](https://github.com/maiibrahim335)
+* [Aisha Taha]
+
 ## 📌 Project Overview
 **Arkan Home** is a data-driven project that transforms and localizes a global e-commerce dataset (Olist Brazil) to simulate a realistic specialized E-commerce business operating in the **Egyptian Market**, specifically focusing on the **Home Décor and Furniture** niche.
 
