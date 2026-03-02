@@ -61,8 +61,8 @@ The upcoming analytical phase will focus on developing advanced DAX measures to 
 
 ## 🚀 How to Navigate this Repository
 1.  `Dataset/`: Contains the original raw CSV files (Olist) and the custom mapping dictionaries (`Geography_Mapping.xlsx`, `product_category_mapping.csv`).
-2.  `SQL_Scripts/`: *(Optional: Add any SQL queries used for initial DB setup)*.
-3.  `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
+2. `SQL_Scripts/`: Contains the full database schema extraction and the manual queries used for data cleaning, table creation, and datatype transformation in SQL Server.
+3. `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
 
 ---
 *Created as a Final Graduation Project for the Data Analytics - Microsoft Power BI Specialist Track.*
