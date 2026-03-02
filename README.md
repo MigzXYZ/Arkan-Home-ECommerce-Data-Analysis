@@ -1,8 +1,8 @@
 # 🛋️ Arkan Home: E-Commerce Data Localization & Analytics (Egypt)
 
-![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
-![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)
-![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)
+[![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://github.com/MigzXYZ/Arkan-Home-ECommerce-Data-Analysis/tree/main/PowerBI_File)
+[![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=for-the-badge&logo=microsoft-sql-server&logoColor=white)](https://github.com/MigzXYZ/Arkan-Home-ECommerce-Data-Analysis/tree/main/SQL_Scripts)
+[![Excel](https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)](https://github.com/MigzXYZ/Arkan-Home-ECommerce-Data-Analysis/tree/main/Dataset)
 
 ## 📌 Project Overview
 **Arkan Home** is a data-driven project that transforms and localizes a global e-commerce dataset (Olist Brazil) to simulate a realistic specialized E-commerce business operating in the **Egyptian Market**, specifically focusing on the **Home Décor and Furniture** niche.
