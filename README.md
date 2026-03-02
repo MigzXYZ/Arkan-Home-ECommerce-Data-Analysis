@@ -60,9 +60,7 @@ The upcoming analytical phase will focus on developing advanced DAX measures to 
 
 ## 📊 Dashboard Previews - *[Coming Soon]*
 *(Screenshots of the final Power BI Dashboard pages will be added here upon completion)*
-* **Page 1:** Executive Summary & Sales KPIs.
-* **Page 2:** Logistics & Delivery Performance.
-* **Page 3:** Customer Demographics & Satisfaction.
+
 
 ---
 
