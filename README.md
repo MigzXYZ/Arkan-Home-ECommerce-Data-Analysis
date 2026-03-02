@@ -61,8 +61,9 @@ The upcoming analytical phase will focus on developing advanced DAX measures to 
 
 ## 🚀 How to Navigate this Repository
 1.  `Dataset/`: Contains the original raw CSV files (Olist) and the custom mapping dictionaries (`Geography_Mapping.xlsx`, `product_category_mapping.csv`).
-2. `SQL_Scripts/`: Contains the full database schema extraction and the manual queries used for data cleaning, table creation, and datatype transformation in SQL Server.
-3. `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
+   * **Note:** The raw Brazilian E-Commerce public dataset by Olist is not hosted in this repository due to size limits. You can download it directly from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
+3. `SQL_Scripts/`: Contains the full database schema extraction and the manual queries used for data cleaning, table creation, and datatype transformation in SQL Server.
+4. `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
 
 ---
 *Created as a Final Graduation Project for the Data Analytics - Microsoft Power BI Specialist Track.*
