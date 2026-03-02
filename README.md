@@ -8,7 +8,7 @@
 * [Ahmed Magdy](https://github.com/MigzXYZ)
 * [Mark Morris]
 * [Mai Ibrahim](https://github.com/maiibrahim335)
-* [Aisha Taha]
+* [Aisha Taha](https://github.com/Aisha-taha)
 
 ## 📌 Project Overview
 **Arkan Home** is a data-driven project that transforms and localizes a global e-commerce dataset (Olist Brazil) to simulate a realistic specialized E-commerce business operating in the **Egyptian Market**, specifically focusing on the **Home Décor and Furniture** niche.
@@ -32,7 +32,8 @@ To ensure maximum performance (using the VertiPaq engine), the data was modeled 
     * `Dim_Sellers`: Mapped to Egyptian Governorates and Cities.
     * `Dim_Date`: Role-playing dimension for purchase, shipping, and delivery tracking.
 
-*(Add a screenshot of your Power BI Data Model here later)*
+<img width="1775" height="810" alt="image" src="https://github.com/user-attachments/assets/32abbbea-f943-42d2-a26a-e27d16eed015" />
+
 
 ---
 
