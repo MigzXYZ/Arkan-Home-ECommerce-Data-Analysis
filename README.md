@@ -22,18 +22,27 @@ There is a significant lack of accessible, large-scale e-commerce datasets speci
 
 ---
 
-## 🏗️ Data Architecture & Engineering
+## 🏗️ Data Architecture, ETL & Localization
+*(This section combines both SQL Server database optimization and Power Query localization steps)*
 
-To ensure high performance and follow Data Warehousing best practices, the data model was transformed from a normalized transactional structure into an optimized **Star Schema**. 
+To ensure high performance and follow Data Warehousing best practices, the data model was transformed from a normalized transactional structure into an optimized **Star Schema**. All heavy transformations were pushed upstream to SQL Server using the principle of **Query Folding** to reduce the load on the Power BI engine, while market-specific localization was handled via Power Query.
 
-All heavy transformations (ETL) were pushed upstream to SQL Server using the principle of **Query Folding** to reduce the load on the Power BI engine.
-
-### Key Engineering Decisions:
+### 1. Database Engineering (SQL Server):
 * **Surrogate Keys for Performance:** Complex string identifiers (UUIDs) were converted into sequential Integers (INTs). This significantly reduces memory consumption and speeds up DAX calculations.
 * **Degenerate Dimensions:** Instead of creating nearly empty dimension tables for Customers and Sellers, their keys were integrated directly into the `Fact_Sales` table. This saves storage while maintaining the ability to perform `DISTINCTCOUNT` aggregations.
 * **Role-Playing Dimension:** A single `Dim_Geography` table was designed to serve multiple roles (Customer Geography and Seller Geography) simultaneously.
-* **Data Cleaning & Consolidation:** * Replaced `NULL` or blank product categories with `'Others'`.
+* **Data Cleaning & Consolidation:**
+  * Replaced `NULL` or blank product categories with `'Others'`.
   * Consolidated fragmented payment methods (`boleto`, `not_defined`) into a unified `'Cash'` category.
+  * Aggregated Payments and Reviews datasets (`Group By` order_id) and merged them into the `Fact_Sales` table to avoid duplication and eliminate many-to-many relationships.
+
+### 2. Market Localization (Power Query):
+Key transformations applied to synthesize the Egyptian market environment:
+* **Geographic Localization:** Mapped Brazilian state codes to 27 Egyptian Governorates (e.g., SP -> Cairo, RJ -> Alexandria) to enable accurate local logistics analysis.
+* **Strategic Currency Translation (BRL to EGP):** Instead of a flat exchange rate, a **Conditional Inflation Multiplier** was applied based on product categories to reflect realistic 2024/2026 Egyptian market prices:
+    * *High-Ticket Items* (e.g., Modern Sofa Sets, Chandeliers): Multiplied by **65**.
+    * *Mid-Ticket Items* (e.g., Gallery Wall Art, Ergonomic Chairs): Multiplied by **35**.
+    * *Low-Ticket Items* (e.g., Scented Candles, Organizers): Multiplied by **15**.
 * **Dynamic Image URLs:** Integrated Egyptian State Flags directly into the geographic dimension to be rendered dynamically within Power BI visuals.
 
 ### 🕸️ Data Model (Star Schema)
@@ -45,19 +54,6 @@ The model consists of a single, centralized Fact Table (`Fact_Sales`) surrounded
 5. `Dim_Status`
 
 <img width="1675" height="797" alt="image" src="https://github.com/user-attachments/assets/9f7a6e4f-922c-47b4-8dc4-3978849073d9" />
-
-
----
-
-## ⚙️ Data Engineering & ETL (Power Query)
-Key transformations applied to synthesize the Egyptian market environment:
-
-1.  **Geographic Localization:** Mapped Brazilian state codes to 27 Egyptian Governorates (e.g., SP -> Cairo, RJ -> Alexandria) to enable accurate local logistics analysis.
-2.  **Strategic Currency Translation (BRL to EGP):** Instead of a flat exchange rate, a **Conditional Inflation Multiplier** was applied based on product categories to reflect realistic 2024/2026 Egyptian market prices:
-    * *High-Ticket Items* (e.g., Modern Sofa Sets, Chandeliers): Multiplied by **65**.
-    * *Mid-Ticket Items* (e.g., Gallery Wall Art, Ergonomic Chairs): Multiplied by **35**.
-    * *Low-Ticket Items* (e.g., Scented Candles, Organizers): Multiplied by **15**.
-3.  **Data Flattening:** Aggregated Payments and Reviews datasets (`Group By` order_id) and merged them into the `Fact_Sales` table to avoid duplication and eliminate many-to-many relationships.
 
 ---
 
@@ -73,14 +69,13 @@ The upcoming analytical phase will focus on developing advanced DAX measures to 
 ## 📊 Dashboard Previews - *[Coming Soon]*
 *(Screenshots of the final Power BI Dashboard pages will be added here upon completion)*
 
-
 ---
 
 ## 🚀 How to Navigate this Repository
-1.  `Dataset/`: Contains the original raw CSV files (Olist) and the custom mapping dictionaries (`Geography_Mapping.xlsx`, `product_category_mapping.csv`).
+1. `Dataset/`: Contains the original raw CSV files (Olist) and the custom mapping dictionaries (`Geography_Mapping.xlsx`, `product_category_mapping.csv`).
    * **Note:** The raw Brazilian E-Commerce public dataset by Olist is not hosted in this repository due to size limits. You can download it directly from [Kaggle](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce).
-3. `SQL_Scripts/`: Contains the full database schema extraction and the manual queries used for data cleaning, table creation, and datatype transformation in SQL Server.
-4. `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
+2. `SQL_Scripts/`: Contains the full database schema extraction and the manual queries used for data cleaning, table creation, and datatype transformation in SQL Server.
+3. `PowerBI_File/`: Contains the `DEPI Final Graduation Project.pbix` (Download to interact with the model).
 
 ---
 *Created as a Final Graduation Project for the Data Analytics - Microsoft Power BI Specialist Track.*
