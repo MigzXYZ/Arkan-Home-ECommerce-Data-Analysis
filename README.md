@@ -22,17 +22,29 @@ There is a significant lack of accessible, large-scale e-commerce datasets speci
 
 ---
 
-## 🏗️ Data Architecture & Star Schema
-To ensure maximum performance (using the VertiPaq engine), the data was modeled into a highly optimized **Star Schema**:
+## 🏗️ Data Architecture & Engineering
 
-* **Fact Table (`Fact_Sales`):** The core table containing transaction details, standardized EGP pricing, freight values, and review scores (Granularity: Item level).
-* **Dimensions:**
-    * `Dim_Products`: Filtered for the Home Décor niche with localized English names.
-    * `Dim_Customers`: Mapped to Egyptian Governorates and Cities.
-    * `Dim_Sellers`: Mapped to Egyptian Governorates and Cities.
-    * `Dim_Date`: Role-playing dimension for purchase, shipping, and delivery tracking.
+To ensure high performance and follow Data Warehousing best practices, the data model was transformed from a normalized transactional structure into an optimized **Star Schema**. 
 
-<img width="1775" height="810" alt="image" src="https://github.com/user-attachments/assets/32abbbea-f943-42d2-a26a-e27d16eed015" />
+All heavy transformations (ETL) were pushed upstream to SQL Server using the principle of **Query Folding** to reduce the load on the Power BI engine.
+
+### Key Engineering Decisions:
+* **Surrogate Keys for Performance:** Complex string identifiers (UUIDs) were converted into sequential Integers (INTs). This significantly reduces memory consumption and speeds up DAX calculations.
+* **Degenerate Dimensions:** Instead of creating nearly empty dimension tables for Customers and Sellers, their keys were integrated directly into the `Fact_Sales` table. This saves storage while maintaining the ability to perform `DISTINCTCOUNT` aggregations.
+* **Role-Playing Dimension:** A single `Dim_Geography` table was designed to serve multiple roles (Customer Geography and Seller Geography) simultaneously.
+* **Data Cleaning & Consolidation:** * Replaced `NULL` or blank product categories with `'Others'`.
+  * Consolidated fragmented payment methods (`boleto`, `not_defined`) into a unified `'Cash'` category.
+* **Dynamic Image URLs:** Integrated Egyptian State Flags directly into the geographic dimension to be rendered dynamically within Power BI visuals.
+
+### 🕸️ Data Model (Star Schema)
+The model consists of a single, centralized Fact Table (`Fact_Sales`) surrounded by supporting Dimension Tables:
+1. `Dim_Date` (Generated via DAX)
+2. `Dim_Product`
+3. `Dim_Geography`
+4. `Dim_PaymentMethod`
+5. `Dim_Status`
+
+<img width="1675" height="797" alt="image" src="https://github.com/user-attachments/assets/9f7a6e4f-922c-47b4-8dc4-3978849073d9" />
 
 
 ---
