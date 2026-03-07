@@ -53,7 +53,7 @@ The model consists of a single, centralized Fact Table (`Fact_Sales`) surrounded
 4. `Dim_PaymentMethod`
 5. `Dim_Status`
 
-<img width="1675" height="797" alt="image" src="https://github.com/user-attachments/assets/9f7a6e4f-922c-47b4-8dc4-3978849073d9" />
+<img width="1496" height="793" alt="image" src="https://github.com/user-attachments/assets/f17558e7-ea3d-47e1-be28-3031ef3d90b7" />
 
 ---
 
