@@ -36,17 +36,20 @@ FROM (SELECT DISTINCT order_id FROM olist_orders WHERE order_id IS NOT NULL) t;
 
 -- A. Dim_Geography
 SELECT 
-    CAST(ROW_NUMBER() OVER (ORDER BY State_Code) AS INT) AS GeoKey,
-    Olist_Source_Mapping,
-    State_Code AS Egypt_StateCode,
-    City_Name AS Egypt_CityName,
-    Region AS Egypt_Region
+    CAST(ROW_NUMBER() OVER (ORDER BY gm.State_Code) AS INT) AS GeoKey,
+    gm.Olist_Source_Mapping,
+    gm.State_Code AS Egypt_StateCode,
+    gm.City_Name AS Egypt_CityName,
+    gm.Region AS Egypt_Region,
+    sf.Img AS Flag_Image_URL
 INTO Dim_Geography
-FROM geography_mapping
-WHERE State_Code IS NOT NULL;
+FROM geography_mapping gm
+LEFT JOIN state_flags sf ON gm.State_Code = sf.State_Code
+WHERE gm.State_Code IS NOT NULL;
 
 ALTER TABLE Dim_Geography ALTER COLUMN GeoKey INT NOT NULL;
 ALTER TABLE Dim_Geography ADD CONSTRAINT PK_Dim_Geography PRIMARY KEY (GeoKey);
+ALTER TABLE Dim_Geography DROP COLUMN Olist_Source_Mapping;
 
 
 -- B. Dim_Product
