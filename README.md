@@ -30,6 +30,7 @@ To ensure high performance and follow Data Warehousing best practices, the data 
 ### 1. Database Engineering (SQL Server):
 * **Surrogate Keys for Performance:** Complex string identifiers (UUIDs) were converted into sequential Integers (INTs). This significantly reduces memory consumption and speeds up DAX calculations.
 * **Degenerate Dimensions:** Instead of creating nearly empty dimension tables for Customers and Sellers, their keys were integrated directly into the `Fact_Sales` table. This saves storage while maintaining the ability to perform `DISTINCTCOUNT` aggregations.
+* **Geographic Localization:** Mapped Brazilian state codes to 27 Egyptian Governorates (e.g., SP -> Cairo, RJ -> Alexandria) to enable accurate local logistics analysis.
 * **Role-Playing Dimension:** A single `Dim_Geography` table was designed to serve multiple roles (Customer Geography and Seller Geography) simultaneously.
 * **Data Cleaning & Consolidation:**
   * Replaced `NULL` or blank product categories with `'Others'`.
@@ -38,7 +39,6 @@ To ensure high performance and follow Data Warehousing best practices, the data 
 
 ### 2. Market Localization (Power Query):
 Key transformations applied to synthesize the Egyptian market environment:
-* **Geographic Localization:** Mapped Brazilian state codes to 27 Egyptian Governorates (e.g., SP -> Cairo, RJ -> Alexandria) to enable accurate local logistics analysis.
 * **Strategic Currency Translation (BRL to EGP):** Instead of a flat exchange rate, a **Conditional Inflation Multiplier** was applied based on product categories to reflect realistic 2024/2026 Egyptian market prices:
     * *High-Ticket Items* (e.g., Modern Sofa Sets, Chandeliers): Multiplied by **65**.
     * *Mid-Ticket Items* (e.g., Gallery Wall Art, Ergonomic Chairs): Multiplied by **35**.
