@@ -6,7 +6,7 @@
 
 ## 👥 Team Members
 * [Ahmed Magdy](https://github.com/MigzXYZ)
-* [Mark Morris]
+* [Mark Morris](https://github.com/markmorrismaher)
 * [Mai Ibrahim](https://github.com/maiibrahim335)
 * [Aisha Taha](https://github.com/Aisha-taha)
 
