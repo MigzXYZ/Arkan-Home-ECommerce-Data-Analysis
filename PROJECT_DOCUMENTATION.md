@@ -215,6 +215,8 @@ Additional model-level fields and tables were created for reporting, including:
 ### Relationship Design
 The main active analytical relationship is based on purchase date, while operational date fields such as delivery and dispatch dates are used in logistics calculations.
 
+<img width="1278" height="839" alt="image" src="https://github.com/user-attachments/assets/c1cb10d3-59cf-4387-a23b-6fc4792ff59f" />
+
 ---
 
 ## 8. Dashboard UI/UX Design
@@ -229,6 +231,8 @@ The dashboard uses a consistent Arkan Home visual identity with:
 - Page-level slicers for year and month
 - Help overlays to guide users
 - Clear separation between analytical sections
+
+<img width="1547" height="867" alt="image" src="https://github.com/user-attachments/assets/e8439d37-06fd-437a-ad65-e1110a7ec2a1" />
 
 ### Dashboard Pages
 
