@@ -345,9 +345,11 @@ Arkan-Home-ECommerce-Data-Analysis/
 │
 ├── PowerBI_File/
 │   └── DEPI Graduation Project - Arkan Home.pbix
+│   └── Arkan Home.pdf
 │
 ├── LICENSE
 └── README.md
+└── PROJECT_DOCUMENTATION.md
 ```
 
 ---
